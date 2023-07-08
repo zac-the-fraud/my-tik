@@ -1,0 +1,36 @@
+.wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .head{
+        width: 1366px;
+        background-color: gold;
+        height: 80px;
+        display: flex;
+        justify-content: space-between;
+        .logo{
+            width: 10%;
+            background-color: green;
+        }
+        .search{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40%;
+            height: 100%;
+            background-color: aliceblue;
+            .search-input{
+                width: 200px;
+                background-color: aquamarine;
+                border-radius: 20px;
+                height: 2rem;
+            }
+        }
+        .navigate
+        {
+            width: 20%;
+            height: 100%;
+            background-color: rgb(85, 95, 104);
+        }
+    }
+}
