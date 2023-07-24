@@ -1,5 +1,23 @@
 .wrapper{
     height: 800px;
-    width: 400px;
-    background-color: aqua;
+    width: 20%;
+    display: flex;
+    justify-content: space-around;
+    .menu{
+        padding-top: 50px;
+        padding-left: 50px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        .menu-item{
+           padding-top: 10px;
+           color: red;
+           .menu-text{
+            padding: 6px;
+           }
+        }
+        .icon-width{
+            width: 16px;
+        }
+    }
 }
