@@ -29,6 +29,7 @@
             background-color:#f1f1f2;
             border-radius: 40px ;
             color:rgba(24, 22, 35, 0.2);
+            
             .search-input{
                 margin: 0 6px 0 6px;
                 width: 100%;
@@ -78,4 +79,9 @@
             
         }
     }
+}
+
+.search-result{
+    color: green;
+    width: 361px;
 }
