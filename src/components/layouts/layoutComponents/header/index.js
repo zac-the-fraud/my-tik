@@ -1,11 +1,21 @@
 import classNames from "classnames/bind";
-
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisVertical, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
+
+import Tippy from '@tippyjs/react/headless';
+
+import { Wrapper as PopperWrapper } from "../../../Popper";
 import styles from './header.module.scss'
 const cx = classNames.bind(styles)
 function Header() {
+    const [searchResult, setSearchResult] = useState([])
+    useEffect(() => {
+        setTimeout(() => {
+            setSearchResult([1, 2, 3])
+        }, 0);
+    })
     return (
         <div className={cx('wrapper')}>
             <div className={cx('head')}>
@@ -15,22 +25,42 @@ function Header() {
                     </svg>
                     <span>TIKTOK</span>
                 </div>
-                <div className={cx('search')}>
-                    <input className={cx('search-input')} placeholder="Search" />
-                    <button className={cx('search-clear')}><FontAwesomeIcon icon={faCircleXmark} size='fa-xl' /></button>
-                    <div className={cx('search-loading')}>
-                        <FontAwesomeIcon icon={icon({ name: 'spinner', size: 'fa-xl' })} />
+                <Tippy
+                    visible={searchResult.length > 0}
+                    interactive='true'
+                    render={attrs => (
+
+                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+                            <PopperWrapper>
+                                
+                            </PopperWrapper>
+                        </div>
+
+                    )}
+                >
+                    <div className={cx('search')}>
+                        <input className={cx('search-input')} placeholder="Search" />
+                        <button className={cx('search-clear')}>
+                            <FontAwesomeIcon icon={faCircleXmark} size='xs' />
+                        </button>
+                        <div className={cx('search-loading')}>
+                            <FontAwesomeIcon icon={icon({ name: 'spinner', size: 'l' })} />
+                        </div>
+                        <Tippy content='search here'>
+                            <button className={cx('search-btn')}>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 512 512" fill='rgba(24, 22, 35, 0.2)'>
+                                    <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+                                </svg>
+                            </button>
+                        </Tippy>
                     </div>
+                </Tippy>
 
-
-                    <button className={cx('search-btn')}>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 512 512" fill='rgba(24, 22, 35, 0.2)'>
-                            <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
-                        </svg>
-                    </button>
-                </div>
                 <div className={cx('navigate')}>
-                    <button className={cx('global-btn')}>Upload</button>
+                    <Tippy content='upload here'>
+
+                        <button className={cx('global-btn')}>Upload</button>
+                    </Tippy>
                     <button className={cx('global-btn')}>Login</button>
                     <FontAwesomeIcon icon={faEllipsisVertical} />
                 </div>
